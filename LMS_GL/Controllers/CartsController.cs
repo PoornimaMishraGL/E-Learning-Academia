@@ -169,5 +169,15 @@ namespace LMS_GL.Controllers
         {
           return (_context.carts?.Any(e => e.id == id)).GetValueOrDefault();
         }
+//------------------------------------Buy Now----------------------------------
+        public async Task<IActionResult> BuyNow(int? id)
+        {
+            var cart = await _context.carts
+                .Include(c => c.courses)
+                .Include(c => c.student)
+                .FirstOrDefaultAsync(m => m.id == id);
+          
+            return View(cart);
+        }
     }
 }
