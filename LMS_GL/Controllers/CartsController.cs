@@ -58,7 +58,7 @@ namespace LMS_GL.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,StuId,CourseId,Coursename,Price,Description,duration,MentorName")] Cart cart)
+        public async Task<IActionResult> Create([Bind("id,ImagePath,StuId,CourseId,Coursename,Price,Description,duration,MentorName")] Cart cart)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace LMS_GL.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,StuId,CourseId,Coursename,Price,Description,duration,MentorName")] Cart cart)
+        public async Task<IActionResult> Edit(int id, [Bind("id,ImagePath,StuId,CourseId,Coursename,Price,Description,duration,MentorName")] Cart cart)
         {
             if (id != cart.id)
             {

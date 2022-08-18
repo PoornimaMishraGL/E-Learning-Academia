@@ -7,6 +7,7 @@ namespace LMS_GL.Models
     {
         [Key]
         public int id { get; set; }
+        [NotMapped]
         public IFormFile CourseImage { get; set; }
         public string ImagePath { get; set; }
         

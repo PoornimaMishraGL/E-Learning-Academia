@@ -40,6 +40,10 @@ namespace LMS_GL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("MentorName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

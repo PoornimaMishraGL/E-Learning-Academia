@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS_GL.Migrations
 {
     [DbContext(typeof(LMSContext))]
-    [Migration("20220818085128_PoornimaFirst")]
+    [Migration("20220818120516_PoornimaFirst")]
     partial class PoornimaFirst
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,6 +39,10 @@ namespace LMS_GL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImagePath")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
