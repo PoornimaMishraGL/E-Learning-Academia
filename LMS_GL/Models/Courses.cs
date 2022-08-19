@@ -18,7 +18,6 @@ namespace LMS_GL.Models
         public string Description { get; set; }
         public string duration { get; set; }
         public string MentorName { get; set; }
-       
-
+      
     }
 }

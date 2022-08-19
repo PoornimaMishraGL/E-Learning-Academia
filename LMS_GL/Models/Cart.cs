@@ -22,7 +22,7 @@ namespace LMS_GL.Models
         public string Coursename { get; set; }
         public string Price { get; set; }
         public string Description { get; set; }
-        public int duration { get; set; }
+        public string duration { get; set; }
         public string MentorName { get; set; }
 
     }

@@ -16,7 +16,7 @@ namespace LMS_GL.Models
         [NotMapped]
         public IFormFile StuImage { get; set; }
         public string ImagePath { get; set; }
-        public int State { get; set; }
+        public string State { get; set; }
         public string Country { get; set; }
     }
 }
