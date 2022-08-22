@@ -17,27 +17,25 @@
     <table class="table table-striped border" id="myTable">
         <thead>
             <tr class="table-info">
-            <th> @Html.DisplayNameFor(c=>c.category)</th>
             <th> @Html.DisplayNameFor(c=>c.Coursename)</th>
+            <th> @Html.DisplayNameFor(c=>c.category)</th>
 @*            <th> @Html.DisplayNameFor(c=>c.ImagePath)</th>*@
             <th width="25%"> @Html.DisplayNameFor(c=>c.Description)</th>
-            <th> @Html.DisplayNameFor(c=>c.duration)</th>
             <th> @Html.DisplayNameFor(c=>c.MentorName)</th>
+            <th> @Html.DisplayNameFor(c=>c.duration)</th>
             <th> @Html.DisplayNameFor(c=>c.Price)</th>
-            
-
             <th></th>
         </tr>
         </thead>
         <tbody>
             @foreach(var item in Model){
                 <tr>
-                    <td> @item.category.CategoryName</td>
                     <td> @item.Coursename</td>
+                    <td> @item.category.CategoryName</td>
                     @*<td> <img src="@Url.Content(@item.ImagePath)" width="150" /></td>*@
                     <td> @item.Description</td>
-                    <td> @item.duration</td>
                     <td> @item.MentorName</td>
+                    <td> @item.duration</td>
                     <td> @item.Price</td>
 
                     <td style="width:150px">
@@ -52,3 +50,10 @@
         </tbody>
     </table>
 </div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function() {
+        $('#myTable').DataTable( );
+        } );
+    </script>
+}

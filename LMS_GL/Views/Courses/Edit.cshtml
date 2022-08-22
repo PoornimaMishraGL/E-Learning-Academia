@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@*
 <h1>Edit</h1>
 
 <h4>Courses</h4>
@@ -62,4 +62,109 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+}*@
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="text-info">Edit Product</h2>
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <div class="p-4 rounded border row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="CourseId"/>
+        <div class="col-1"></div>
+        <div class="col-7">
+            <div class="form-group row mb-2">
+            <div class="col-3">
+                <label asp-for="CategId"></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="CategId" class="form-control" asp-items="ViewBag.CategId"></select>
+            </div>
+            <span asp-validation-for="CategId" class="text-danger"></span>
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-3">
+                <label asp-for="Coursename"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Coursename" class="form-control"/>
+            </div>
+            <span asp-validation-for="Coursename" class="text-danger"></span>
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-3">
+                <label asp-for="CourseImage"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="CourseImage" type="file" class="form-control"/>
+            </div>
+            <span asp-validation-for="CourseImage" class="text-danger"></span>
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-3">
+                <label asp-for="Price"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Price" class="form-control"/>
+            </div>
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-3">
+                <label asp-for="Description"></label>
+            </div>
+            <div class="col-5">
+                
+                <input asp-for="Description" class="form-control"/>
+            </div>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-3">
+                <label asp-for="duration"></label>
+            </div>
+            <div class="col-5">
+                
+                <input asp-for="duration" class="form-control"/>
+            </div>
+            <span asp-validation-for="duration" class="text-danger"></span>
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-3">
+                <label asp-for="MentorName"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="MentorName"  class="form-control"/>
+            </div>
+            <span asp-validation-for="MentorName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Update" class="btn btn-primary"/>
+            <a asp-action="Index" class="btn btn-primary">Back to list</a>
+        </div>
+        </div>
+        
+        @*<div class="col-1"></div>*@
+        <div class="col-3">
+            
+            <img src="~/@Model.ImagePath" width="100%" style="border-radius:5px; border:1px solid #efefef"/>
+            
+        </div>
+        <div class="col-1"></div>
+    </div>
+    
+</form>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

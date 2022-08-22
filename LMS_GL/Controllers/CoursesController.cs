@@ -95,35 +95,18 @@ namespace LMS_GL.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CourseId,CategId,Coursename,ImagePath,Price,Description,duration,MentorName")] Courses courses)
+        public async Task<IActionResult> Edit(int id, Courses courses)
         {
             if (id != courses.CourseId)
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
+                    var nam = Path.Combine(_env.WebRootPath + "/Images", Path.GetFileName(courses.CourseImage.FileName));
+                    courses.CourseImage.CopyTo(new FileStream(nam, FileMode.Create));
+                    courses.ImagePath = "Images/" + courses.CourseImage.FileName;
                     _context.Update(courses);
                     await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CoursesExists(courses.CourseId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
                 return RedirectToAction(nameof(Index));
-            }
-            ViewData["CategId"] = new SelectList(_context.category, "CategId", "CategoryName", courses.CategId);
-            return View(courses);
         }
 
         // GET: Courses/Delete/5
