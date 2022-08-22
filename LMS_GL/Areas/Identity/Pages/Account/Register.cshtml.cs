@@ -80,6 +80,11 @@ namespace LMS_GL.Areas.Identity.Pages.Account
             [DataType(DataType.Text)]
             [Display(Name = "Last name")]
             public string LastName { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Phone Number")]
+            public string PhoneNum { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -126,6 +131,7 @@ namespace LMS_GL.Areas.Identity.Pages.Account
                 {
                     FirstName = Input.FirstName,
                     Email = Input.Email,
+                    PhoneNum = Input.PhoneNum,
                     LastName = Input.LastName,
                     UserName = Input.Email
                 };

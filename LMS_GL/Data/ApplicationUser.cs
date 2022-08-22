@@ -13,6 +13,12 @@ namespace LMS_GL.Data
         [Column(TypeName = "nvarchar(50)")]
         public string LastName { get; set; }
 
+        [PersonalData]
+        [Column(TypeName = "nvarchar(50)")]
+        public string PhoneNum { get; set; }
+
+
+
 
     }
 }
