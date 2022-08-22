@@ -5,68 +5,50 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info"> Course List</h2>
+    </div>
+    <div class="col-6 text-end">
+        <a class="btn btn-info" asp-action="Create"><i class="bi bi-plus-circle"></i>&nbsp; Create New</a>
+    </div>
+</div>
+<div>
+    <table class="table table-striped border" id="myTable">
+        <thead>
+            <tr class="table-info">
+            <th> @Html.DisplayNameFor(c=>c.category)</th>
+            <th> @Html.DisplayNameFor(c=>c.Coursename)</th>
+@*            <th> @Html.DisplayNameFor(c=>c.ImagePath)</th>*@
+            <th width="25%"> @Html.DisplayNameFor(c=>c.Description)</th>
+            <th> @Html.DisplayNameFor(c=>c.duration)</th>
+            <th> @Html.DisplayNameFor(c=>c.MentorName)</th>
+            <th> @Html.DisplayNameFor(c=>c.Price)</th>
+            
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Coursename)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagePath)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.duration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MentorName)
-            </th>
             <th></th>
         </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.category.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Coursename)
-            </td>
-            <td>
-                <img src="@Url.Content(@item.ImagePath)" width="150" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.duration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MentorName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CourseId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CourseId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CourseId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach(var item in Model){
+                <tr>
+                    <td> @item.category.CategoryName</td>
+                    <td> @item.Coursename</td>
+                    @*<td> <img src="@Url.Content(@item.ImagePath)" width="150" /></td>*@
+                    <td> @item.Description</td>
+                    <td> @item.duration</td>
+                    <td> @item.MentorName</td>
+                    <td> @item.Price</td>
+
+                    <td style="width:150px">
+                        <div class="btn-group">
+                            <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.CourseId"><i class="bi bi-pencil-square"></i></a>
+                            <a asp-action="Details" class="btn btn-success"  asp-route-id="@item.CourseId"><i class="bi bi-ticket-detailed"></i></a>
+                            <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.CourseId"><i class="bi bi-trash3"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
