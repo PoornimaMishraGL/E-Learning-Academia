@@ -4,7 +4,7 @@
 
 namespace LMS_GL.Migrations.ApplicationDb
 {
-    public partial class narayan1 : Migration
+    public partial class narayan : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

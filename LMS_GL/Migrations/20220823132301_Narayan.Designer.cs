@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS_GL.Migrations
 {
     [DbContext(typeof(LMSContext))]
-    [Migration("20220823064937_Narayan")]
+    [Migration("20220823132301_Narayan")]
     partial class Narayan
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
