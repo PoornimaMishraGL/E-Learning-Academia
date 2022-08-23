@@ -193,7 +193,11 @@
                 <a class="nav-item nav-link" asp-controller="Carts" asp-action="Index"><i class="bi bi-cart4" style="width:100px"></i></a>
 
             </div>
-            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Sign Up<i class="fa fa-arrow-right ms-3"></i></a>
+            @*<a href="" class="btn btn-primary"> </a>*@
+            <div class="btn-group" role="group">
+                < partial name="_LoginPartial" />   
+            </div>
+          
         </div>
     </nav>
 <!----------------------------------------------------------- Navbar End ------------------------------------------------------------->
