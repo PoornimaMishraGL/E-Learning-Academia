@@ -147,6 +147,7 @@ namespace LMS_GL.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
         private bool CoursesExists(int id)
         {
           return (_context.courses?.Any(e => e.CourseId == id)).GetValueOrDefault();

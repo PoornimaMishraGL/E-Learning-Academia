@@ -25,6 +25,23 @@ namespace LMS_GL.Controllers
             return View(await lMSContext.ToListAsync());
         }
 
+        public IActionResult Add_to_cart(int id)
+        {
+            Cart c = new Cart();
+            Courses courses = _context.courses.ToList().FirstOrDefault(e=>e.CourseId == id);
+            c.StuId = 1;
+            c.CourseId = id;
+            c.ImagePath = courses.ImagePath;
+            c.Coursename = courses.Coursename;
+            c.Price = courses.Price;
+            c.Description = courses.Description;
+            c.duration = courses.duration;
+            c.MentorName = courses.MentorName;
+            _context.carts.Add(c);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
         // GET: Carts/Details/5
         public async Task<IActionResult> Details(int? id)
         {

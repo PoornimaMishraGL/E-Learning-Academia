@@ -11,6 +11,7 @@ using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
 using LMS_GL.Data;
+using LMS_GL.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -30,13 +31,15 @@ namespace LMS_GL.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        public LMSContext _lms;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            LMSContext lms)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,6 +47,7 @@ namespace LMS_GL.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _lms = lms;
         }
 
         /// <summary>
@@ -135,6 +139,17 @@ namespace LMS_GL.Areas.Identity.Pages.Account
                     LastName = Input.LastName,
                     UserName = Input.Email
                 };
+
+                Student s = new Student();
+            s.FirstName = Input.FirstName;
+            s.LastName = Input.LastName;
+            s.PhoneNumber = Input.PhoneNum;
+            s.ImagePath = "~/Images/male.jpg";
+            s.State = "Haryana";
+            s.Country = "India";
+            _lms.students.Add(s);
+            _lms.SaveChanges();
+
 
                 //await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 //await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
