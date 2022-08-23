@@ -27,6 +27,7 @@ namespace LMS_GL.Controllers
 
         // GET: Carts/Details/5
         public async Task<IActionResult> Details(int? id)
+
         {
             if (id == null || _context.carts == null)
             {
