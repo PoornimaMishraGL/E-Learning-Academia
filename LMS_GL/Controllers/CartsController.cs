@@ -27,6 +27,7 @@ namespace LMS_GL.Controllers
 
         public IActionResult Add_to_cart(int id)
         {
+
             Cart c = new Cart();
             Courses courses = _context.courses.ToList().FirstOrDefault(e=>e.CourseId == id);
             c.StuId = 1;
