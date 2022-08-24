@@ -15,11 +15,13 @@ namespace LMS_GL.Controllers
     public class CartsController : Controller
     {
         private readonly LMSContext _context;
-        
+        public readonly ApplicationDbContext _DbContext;
 
-        public CartsController(LMSContext context)
+
+        public CartsController(LMSContext context,ApplicationDbContext dbContext)
         {
             _context = context;
+            _DbContext = dbContext;
         }
 
         // GET: Carts
@@ -29,16 +31,17 @@ namespace LMS_GL.Controllers
             return View(await lMSContext.ToListAsync());
         }
 
-        public async Task<IActionResult> createOrder(ApplicationUser _requestData, int? id)
+        public async Task<IActionResult> createOrder(ApplicationUser _requestData, int? id,int? stid)
         {
             //Courses cr = new Courses();
 
             string Amount;
+         
             Courses courses = _context.courses.ToList().FirstOrDefault(e => e.CourseId == id );
             Amount = courses.Price;
-
             decimal amt = decimal.Parse(Amount);
-            
+            Student student = _context.students.ToList().FirstOrDefault(e => e.StuId ==id);
+           
 
             Random randomObject = new Random();
             string transactionalId = randomObject.Next(100000, 100000).ToString();
@@ -51,21 +54,22 @@ namespace LMS_GL.Controllers
 
             Razorpay.Api.Order orderResponse = client.Order.Create(options);
             string orderId = orderResponse["id"].ToString();
-            
+
+           
             OrderModel orderModel = new OrderModel
             {
                 orderId = orderResponse.Attributes["id"],
                 razorpayKey = "rzp_test_Qy5wk1RZJb8l5l",
                 amount = amt * 100,
                 currency = "INR",
-                name = _requestData.FirstName + _requestData.LastName,
-                email = _requestData.Email,
-                contactNumber = _requestData.PhoneNum,
+                name = student.FirstName + student.LastName,
+                email =_requestData.Email,
+                contactNumber = student.PhoneNumber,
                // address = _requestData.Address,
-                description = "Testing Description"
+                description = courses.Description,
 
             };
-
+            _DbContext.SaveChanges();
             return View("PaymentPage", orderModel);
         }
 
