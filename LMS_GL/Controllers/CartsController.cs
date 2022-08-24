@@ -9,6 +9,7 @@ using LMS_GL.Models;
 using System.Text;
 using System.Security.Cryptography;
 using LMS_GL.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace LMS_GL.Controllers
 {
@@ -40,8 +41,8 @@ namespace LMS_GL.Controllers
             Courses courses = _context.courses.ToList().FirstOrDefault(e => e.CourseId == id );
             Amount = courses.Price;
             decimal amt = decimal.Parse(Amount);
-            Student student = _context.students.ToList().FirstOrDefault(e => e.StuId ==id);
-           
+            Student student = _context.students.ToList().FirstOrDefault(e => e.StuId == id);
+
 
             Random randomObject = new Random();
             string transactionalId = randomObject.Next(100000, 100000).ToString();
@@ -308,5 +309,7 @@ namespace LMS_GL.Controllers
           
             return View(cart);
         }
+
+        
     }
 }

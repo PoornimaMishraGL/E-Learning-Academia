@@ -1,10 +1,141 @@
-﻿@model IEnumerable<LMS_GL.Models.Feedback>
+﻿@model LMS_GL.Models.Feedback
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+
+  <!-- Contact Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="section-title bg-white text-center text-primary px-3">Feedback Form</h1>
+                <h1 class="mb-5"></h1>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-6 col-md-8 wow fadeInUp" data-wow-delay="0.1s">
+                    <h5>What is Feedback?</h5>
+                    <p class="mb-4">
+                        When you give feedback, it means you offer a helpful response to someone's work or idea.
+                        If you were recording your first album and you asked friends for feedback on which songs to include,
+                        you'd be asking them to offer their critical opinions on your music.
+                        @*<a href="https://htmlcodex.com/contact-form">Download Now</a>.*@
+                    </p>
+
+                    <div class="col-lg-6">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                            <i class="fa fa-map-marker-alt text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="text-primary">Office</h5>
+                            <p class="mb-0">Globallogic, New Delhi, India</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                            <i class="fa fa-phone-alt text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="text-primary">Mobile</h5>
+                            <p class="mb-0">+91 1234 567 890</p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                            <i class="fa fa-envelope-open text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="text-primary">Email</h5>
+                            <p class="mb-0">LMSinfo@example.com</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                            <i class="fa fa-envelope-open text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="text-primary"><i class="bi bi-google-play"></i></h5>
+                            @*<p class="mb-0">LMSinfo@example.com</p>*@
+                        </div>
+                    </div>
+                    </div>
+                </div>
+               
+                        <div class="col-lg-6 col-md-10 wow fadeInUp" data-wow-delay="0.5s">
+                            <form asp-action="Create">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="row g-3">
+                                    <div>
+                                        <h1></h1>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input asp-for="EmailId" class="form-control" />
+                                            <label asp-for="EmailId" class="control-label"></label>
+                                            <span asp-validation-for="EmailId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input asp-for="UserName" class="form-control" />
+                                            <label asp-for="UserName" class="control-label"></label>
+                                            <span asp-validation-for="UserName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea asp-for="Suggestion" class="form-control" style="height: 150px"></textarea>
+                                            <label asp-for="Suggestion" class="control-label"></label>
+                                            <span asp-validation-for="Suggestion" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                           
+                                 </div>
+                                    <div class="form-group">
+                                        @*<button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>*@
+                                        <input type="submit" value="Submit" class="btn btn-primary w-100 py-3"/>
+                                    </div>
+                            </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+@*<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EmailId" class="control-label"></label>
+                <input asp-for="EmailId" class="form-control" />
+                <span asp-validation-for="EmailId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Suggestion" class="control-label"></label>
+                <input asp-for="Suggestion" class="form-control" />
+                <span asp-validation-for="Suggestion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+*@
+
+
+  @*  <h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -44,4 +175,4 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@

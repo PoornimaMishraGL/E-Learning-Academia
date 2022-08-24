@@ -21,9 +21,10 @@ namespace LMS_GL.Controllers
         // GET: Feedbacks
         public async Task<IActionResult> Index()
         {
-              return _context.feedbacks != null ? 
+             /* return _context.feedbacks != null ? 
                           View(await _context.feedbacks.ToListAsync()) :
-                          Problem("Entity set 'LMSContext.feedbacks'  is null.");
+                          Problem("Entity set 'LMSContext.feedbacks'  is null.");*/
+             return View();
         }
 
         // GET: Feedbacks/Details/5
