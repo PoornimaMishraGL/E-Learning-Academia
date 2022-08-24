@@ -8,12 +8,14 @@ using Microsoft.EntityFrameworkCore;
 using LMS_GL.Models;
 using System.Text;
 using System.Security.Cryptography;
+using LMS_GL.Data;
 
 namespace LMS_GL.Controllers
 {
     public class CartsController : Controller
     {
         private readonly LMSContext _context;
+        
 
         public CartsController(LMSContext context)
         {
@@ -27,13 +29,16 @@ namespace LMS_GL.Controllers
             return View(await lMSContext.ToListAsync());
         }
 
-        public async Task<IActionResult> createOrder(Student _requestData,int id)
+        public async Task<IActionResult> createOrder(ApplicationUser _requestData, int? id)
         {
-          //  Courses cr = new Courses();
-           string Amount="";
-            Courses courses = _context.courses.ToList().FirstOrDefault(e => e.CourseId == id);
+            //Courses cr = new Courses();
+
+            string Amount;
+            Courses courses = _context.courses.ToList().FirstOrDefault(e => e.CourseId == id );
             Amount = courses.Price;
+
             decimal amt = decimal.Parse(Amount);
+            
 
             Random randomObject = new Random();
             string transactionalId = randomObject.Next(100000, 100000).ToString();
@@ -53,9 +58,9 @@ namespace LMS_GL.Controllers
                 razorpayKey = "rzp_test_Qy5wk1RZJb8l5l",
                 amount = amt * 100,
                 currency = "INR",
-                name = _requestData.FirstName+_requestData.LastName,
-                email = _requestData.FirstName,
-                contactNumber = _requestData.PhoneNumber,
+                name = _requestData.FirstName + _requestData.LastName,
+                email = _requestData.Email,
+                contactNumber = _requestData.PhoneNum,
                // address = _requestData.Address,
                 description = "Testing Description"
 
