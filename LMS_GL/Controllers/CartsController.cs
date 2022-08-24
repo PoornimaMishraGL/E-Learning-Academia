@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LMS_GL.Models;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace LMS_GL.Controllers
 {
@@ -24,6 +26,106 @@ namespace LMS_GL.Controllers
             var lMSContext = _context.carts.Include(c => c.courses).Include(c => c.student);
             return View(await lMSContext.ToListAsync());
         }
+
+        public async Task<IActionResult> createOrder(Student _requestData,int id)
+        {
+          //  Courses cr = new Courses();
+           string Amount="";
+            Courses courses = _context.courses.ToList().FirstOrDefault(e => e.CourseId == id);
+            Amount = courses.Price;
+            decimal amt = decimal.Parse(Amount);
+
+            Random randomObject = new Random();
+            string transactionalId = randomObject.Next(100000, 100000).ToString();
+            Razorpay.Api.RazorpayClient client = new Razorpay.Api.RazorpayClient("rzp_test_Qy5wk1RZJb8l5l", "DsTw4G8c0W0rhjrfD4MCBDjn");
+            Dictionary<string, object> options = new Dictionary<string, object>();
+            options.Add("amount", amt * 100);
+            // options.Add("recipt", transactionalId);
+            options.Add("currency", "INR");
+            options.Add("payment_capture", "1");
+
+            Razorpay.Api.Order orderResponse = client.Order.Create(options);
+            string orderId = orderResponse["id"].ToString();
+            
+            OrderModel orderModel = new OrderModel
+            {
+                orderId = orderResponse.Attributes["id"],
+                razorpayKey = "rzp_test_Qy5wk1RZJb8l5l",
+                amount = amt * 100,
+                currency = "INR",
+                name = _requestData.FirstName+_requestData.LastName,
+                email = _requestData.FirstName,
+                contactNumber = _requestData.PhoneNumber,
+               // address = _requestData.Address,
+                description = "Testing Description"
+
+            };
+
+            return View("PaymentPage", orderModel);
+        }
+
+        public class OrderModel
+        {
+            public string orderId { get; set; }
+            public string razorpayKey { get; set; }
+            public decimal amount { get; set; }
+            public string currency { get; set; }
+
+            public string name { get; set; }
+            public string email { get; set; }
+            public string contactNumber { get; set; }
+           // public string address { get; set; }
+            public string description { get; set; }
+        }
+
+        public ViewResult AfterPayment()
+        {
+            var paymentStatus = Request.Form["paymentstatus"].ToString();
+            if (paymentStatus == "Fail")
+                return View("Fail");
+
+            var orderId = Request.Form["orderid"].ToString();
+            var paymentId = Request.Form["paymentid"].ToString();
+            var signature = Request.Form["signature"].ToString();
+
+            var validSignature = CompareSignatures(orderId, paymentId, signature);
+            if (validSignature)
+            {
+                ViewBag.Message = "Congratulations!! Your payment was successful";
+                return View("Success");
+            }
+            else
+            {
+                return View("Fail");
+            }
+        }
+
+        private bool CompareSignatures(string orderId, string paymentId, string razorPaySignature)
+        {
+            var text = orderId + "|" + paymentId;
+            var secret = "DsTw4G8c0W0rhjrfD4MCBDjn";
+            var generatedSignature = CalculateSHA256(text, secret);
+            if (generatedSignature == razorPaySignature)
+                return true;
+            else
+                return false;
+        }
+
+        private string CalculateSHA256(string text, string secret)
+        {
+            string result = "";
+            var enc = Encoding.Default;
+            byte[]
+            baText2BeHashed = enc.GetBytes(text),
+            baSalt = enc.GetBytes(secret);
+            System.Security.Cryptography.HMACSHA256 hasher = new HMACSHA256(baSalt);
+            byte[] baHashedText = hasher.ComputeHash(baText2BeHashed);
+            result = string.Join("", baHashedText.ToList().Select(b => b.ToString("x2")).ToArray());
+            return result;
+        }
+
+
+
 
         public IActionResult Add_to_cart(int id)
         {
