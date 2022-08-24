@@ -24,7 +24,7 @@ namespace LMS_GL.Controllers
             _context = context;
             _DbContext = dbContext;
         }
-
+     
         // GET: Carts
         public async Task<IActionResult> Index()
         {
@@ -142,6 +142,9 @@ namespace LMS_GL.Controllers
 
             Cart c = new Cart();
             Courses courses = _context.courses.ToList().FirstOrDefault(e=>e.CourseId == id);
+           Student st=new Student();
+           
+            
             c.StuId = 1;
             c.CourseId = id;
             c.ImagePath = courses.ImagePath;
