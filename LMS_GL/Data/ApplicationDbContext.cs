@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using LMS_GL.Models;
 
 namespace LMS_GL.Data
 {
@@ -19,6 +20,7 @@ namespace LMS_GL.Data
             // Add your customizations after calling base.OnModelCreating(builder);
             ModelBuilder modelBuilder = builder.ApplyConfiguration(new ApplicationUserEntityConfiguration());
         }
+        public DbSet<LMS_GL.Models.Student>? Student { get; set; }
     }
 }
 
