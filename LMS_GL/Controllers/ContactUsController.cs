@@ -21,8 +21,9 @@ namespace LMS_GL.Controllers
         // GET: ContactUs
         public async Task<IActionResult> Index()
         {
-            var lMSContext = _context.contactUs.Include(c => c.student);
-            return View(await lMSContext.ToListAsync());
+            /*var lMSContext = _context.contactUs.Include(c => c.student);
+            return View(await lMSContext.ToListAsync());*/
+            return View();
         }
 
         // GET: ContactUs/Details/5
@@ -47,7 +48,8 @@ namespace LMS_GL.Controllers
         // GET: ContactUs/Create
         public IActionResult Create()
         {
-            ViewData["StuId"] = new SelectList(_context.students, "StuId", "FirstName");
+           /* ViewData["StuId"] = new SelectList(_context.students, "StuId", "FirstName");*/
+
             return View();
         }
 
@@ -58,14 +60,10 @@ namespace LMS_GL.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("StuId,Name,GmailId,PhoneNumber,Message")] ContactUs contactUs)
         {
-            if (ModelState.IsValid)
-            {
+           
                 _context.Add(contactUs);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            ViewData["StuId"] = new SelectList(_context.students, "StuId", "FirstName", contactUs.StuId);
-            return View(contactUs);
         }
 
         // GET: ContactUs/Edit/5
@@ -161,7 +159,7 @@ namespace LMS_GL.Controllers
 
         private bool ContactUsExists(string id)
         {
-          return (_context.contactUs?.Any(e => e.GmailId == id)).GetValueOrDefault();
+          return (_context.contactUs?.Any(e => e.Name == id)).GetValueOrDefault();
         }
     }
 }
