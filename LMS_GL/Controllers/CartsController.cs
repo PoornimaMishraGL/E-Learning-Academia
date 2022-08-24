@@ -31,7 +31,7 @@ namespace LMS_GL.Controllers
             return View(await lMSContext.ToListAsync());
         }
 
-        public async Task<IActionResult> createOrder(ApplicationUser _requestData, int? id,int? stid)
+        public async Task<IActionResult> createOrder(ApplicationUser _requestData, int? id)
         {
             //Courses cr = new Courses();
 

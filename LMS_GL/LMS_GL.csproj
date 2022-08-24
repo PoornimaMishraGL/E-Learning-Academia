@@ -25,7 +25,6 @@
     <Folder Include="template\css\" />
     <Folder Include="template\js\" />
     <Folder Include="template\lib\" />
-    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
   <ItemGroup>
