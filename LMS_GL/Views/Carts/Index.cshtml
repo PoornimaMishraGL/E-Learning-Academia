@@ -5,49 +5,10 @@
 }
 
 
-@*<p>
-    <a asp-action="Create">Create New</a>
-</p>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagePath)
-            </th>
-           @* <th>
-                @Html.DisplayNameFor(model => model.student.FirstName)
-            </th>*@
-            @*<th>
-                @Html.DisplayNameFor(model => model.courses)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Coursename)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.duration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MentorName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@using (Html.BeginForm("createOrder","Carts",FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()*@
-
              <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title bg-white text-center text-primary px-3">Carts</h6>
                 <h1 class="mb-5">Your Carts</h1>
-                @*<button style="text-align:end">Filter</button>*@
+                
             </div>
 
 
@@ -58,8 +19,7 @@
                         <div class="position-relative overflow-hidden">
                             <img class="img-fluid img-thumbnail" src="@item.ImagePath" style="width: 400px; height: 300px;" alt="">
                         </div>
-                        @*<img src="@Url.Content(@item.ImagePath)" width="50" />*@
-                            @*<h5>CourseId: @item.courses.CourseId</h5>*@
+                       
                             <h4>Course: @item.Coursename</h4>
                             <h5 class="mb-4">Price: @item.Price</h5>
                             <h5 class="mb-4">Desc: @item.Description</h5>
@@ -76,11 +36,11 @@
             </div>
 }
 </div>
-<div class="text-end">
+@*<div class="text-end">
 <input />
 <button>Buy Now</button>
 </div>
-
+*@
 
 
 
