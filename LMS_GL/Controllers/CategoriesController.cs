@@ -25,7 +25,12 @@ namespace LMS_GL.Controllers
                           View(await _context.category.ToListAsync()) :
                           Problem("Entity set 'LMSContext.category'  is null.");
         }
-
+        public async Task<IActionResult> Adminindex()
+        {
+            return _context.category != null ?
+                          View(await _context.category.ToListAsync()) :
+                          Problem("Entity set 'LMSContext.category'  is null.");
+        }
         // GET: Categories/Details/5
         public async Task<IActionResult> Details(int? id)
         {
