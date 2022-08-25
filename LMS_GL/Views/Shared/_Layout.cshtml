@@ -54,31 +54,31 @@
                <div class="nav-item dropdown">
                     <a aasp-controller="Categories" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Category</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a asp-controller="Categories" asp-action="Adminindex" class="dropdown-item">Admin</a>
-                        <a asp-controller="Categories" asp-action="Index" class="dropdown-item">Student</a>
+                        <a asp-controller="Categories" asp-action="Adminindex" title="owner" class="dropdown-item">Admin</a>
+                        <a asp-controller="Categories" asp-action="Index" title="user" class="dropdown-item">Student</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
                     <a asp-controller="Courses" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Courses</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a asp-controller="Courses" asp-action="Adminindex" class="dropdown-item">Admin</a>
-                        <a asp-controller="Courses" asp-action="Index" class="dropdown-item">Student</a>
+                        <a asp-controller="Courses" asp-action="Adminindex" title="owner" class="dropdown-item">Admin</a>
+                        <a asp-controller="Courses" asp-action="Index" title="user" class="dropdown-item">Student</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a asp-controller="Home" asp-action="About" class="dropdown-item">About</a>
+                        <a asp-controller="Home" asp-action="About" title="info" class="dropdown-item">About</a>
                         <a asp-controller="Home" asp-action="OurTeam" class="dropdown-item">Our Team</a>
                         <a asp-controller="Home" asp-action="Privacy" class="dropdown-item">Privacy Policy</a>
                     </div>
                 </div>
-                <a class="nav-item nav-link" asp-controller="ContactUs" asp-action="Index">ContactUs</a>
-                <a class="nav-item nav-link" asp-controller="Feedbacks" asp-action="Index">Feedbacks</a>
+                <a class="nav-item nav-link" asp-controller="ContactUs" title="connect" asp-action="Index">ContactUs</a>
+                <a class="nav-item nav-link" asp-controller="Feedbacks" title="Suggestions" asp-action="Index" >Feedbacks</a>
                 
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <a class="nav-item nav-link" asp-controller="Carts" asp-action="Index"><i class="bi bi-cart4" style="width:100px"></i></a>
+                    <a class="nav-item nav-link" asp-controller="Carts" title="View Cart" asp-action="Index"><i class="bi bi-cart4" style="width:100px"></i></a>
                 }
             </div>
             <div class="btn-group" role="group">
