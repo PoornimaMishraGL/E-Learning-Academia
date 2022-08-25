@@ -28,6 +28,9 @@
                     <td>
                         @item.CategoryName
                     </td>
+                    <td>
+                        <a asp-route-id="@item.CategId" asp-action="AssignCourses">List All Courses</a>
+                    </td>
                     <td style="width:150px">
                         <div class="btn-group">
                             <a asp-action="Edit" class="btn btn-primary"  asp-route-id="@item.CategId"><i class="bi bi-pencil-square"></i></a>
