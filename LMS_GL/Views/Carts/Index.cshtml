@@ -4,12 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Carts</h1>
 
 @*<p>
     <a asp-action="Create">Create New</a>
 </p>
-*@
+
 <table class="table">
     <thead>
         <tr>
@@ -19,7 +18,7 @@
            @* <th>
                 @Html.DisplayNameFor(model => model.student.FirstName)
             </th>*@
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.courses)
             </th>
             <th>
@@ -43,51 +42,50 @@
     <tbody>
 @using (Html.BeginForm("createOrder","Carts",FormMethod.Post))
         {
-            @Html.AntiForgeryToken()
+            @Html.AntiForgeryToken()*@
+
+             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Carts</h6>
+                <h1 class="mb-5">Your Carts</h1>
+                @*<button style="text-align:end">Filter</button>*@
+            </div>
+
+
+        <div class="row">
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                <img src="@Url.Content(@item.ImagePath)" width="50" />
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.student.FirstName)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.courses.CourseId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Coursename)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.duration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MentorName)
-            </td>
-             <td>
-                @Html.DisplayFor(modelItem => item.student.StuId)
-            </td>
-            <td>
+    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="course-item bg-light">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid img-thumbnail" src="@item.ImagePath" style="width: 400px; height: 300px;" alt="">
+                        </div>
+                        @*<img src="@Url.Content(@item.ImagePath)" width="50" />*@
+                            @*<h5>CourseId: @item.courses.CourseId</h5>*@
+                            <h4>Course: @item.Coursename</h4>
+                            <h5 class="mb-4">Price: @item.Price</h5>
+                            <h5 class="mb-4">Desc: @item.Description</h5>
+                            <h5 class="mb-4">Duration: @item.duration</h5>
+                           
+               
 
                 <div class="btn-group">
                 <a asp-action="createOrder" class="btn btn-primary" asp-route-id="@item.CourseId"><i class="bi bi-bag"></i></a> 
              
                 <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.id"><i class="bi bi-trash3"></i></a>
                 </div>
-            </td>
-        </tr>
+            </div>
+            </div>
 }
-}
-    </tbody>
-    
-</table>
+</div>
 <div class="text-end">
 <input />
 <button>Buy Now</button>
 </div>
+
+
+
+
+
+
+         
+           
+                           
