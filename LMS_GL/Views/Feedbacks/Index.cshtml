@@ -20,7 +20,7 @@
                         When you give feedback, it means you offer a helpful response to someone's work or idea.
                         If you were recording your first album and you asked friends for feedback on which songs to include,
                         you'd be asking them to offer their critical opinions on your music.
-                        @*<a href="https://htmlcodex.com/contact-form">Download Now</a>.*@
+                        
                     </p>
 
                     <div class="col-lg-6">
@@ -53,16 +53,8 @@
                             <p class="mb-0">LMSinfo@example.com</p>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center">
-                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
-                            <i class="fa fa-envelope-open text-white"></i>
-                        </div>
-                        <div class="ms-3">
-                            <h5 class="text-primary"><i class="bi bi-google-play"></i></h5>
-                            @*<p class="mb-0">LMSinfo@example.com</p>*@
-                        </div>
                     </div>
-                    </div>
+                  
                 </div>
                
                         <div class="col-lg-6 col-md-10 wow fadeInUp" data-wow-delay="0.5s">
@@ -96,7 +88,7 @@
                            
                                  </div>
                                     <div class="form-group">
-                                        @*<button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>*@
+                                        
                                         <input type="submit" value="Submit" class="btn btn-primary w-100 py-3"/>
                                     </div>
                             </form>
@@ -105,74 +97,3 @@
         </div>
     </div>
     <!-- Contact End -->
-
-
-@*<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="EmailId" class="control-label"></label>
-                <input asp-for="EmailId" class="form-control" />
-                <span asp-validation-for="EmailId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Suggestion" class="control-label"></label>
-                <input asp-for="Suggestion" class="form-control" />
-                <span asp-validation-for="Suggestion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-*@
-
-
-  @*  <h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.EmailId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Suggestion)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmailId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Suggestion)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>*@
