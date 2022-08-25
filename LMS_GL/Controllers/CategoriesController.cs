@@ -25,6 +25,16 @@ namespace LMS_GL.Controllers
                           View(await _context.category.ToListAsync()) :
                           Problem("Entity set 'LMSContext.category'  is null.");
         }
+        public ActionResult GetCategories()
+        {
+            return View(_context.category.ToList());
+
+        }
+
+        public ActionResult AssignCourses(int id)
+        {
+            return View(_context.courses.Where(e => e.CategId == id).ToList());
+        }
         public async Task<IActionResult> Adminindex()
         {
             return _context.category != null ?
