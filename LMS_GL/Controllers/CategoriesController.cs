@@ -76,6 +76,7 @@ namespace LMS_GL.Controllers
             {
                 _context.Add(category);
                 await _context.SaveChangesAsync();
+                TempData["success"] = "Category Created Successfully";
                 return RedirectToAction(nameof(Index));
             }
             return View(category);
@@ -115,6 +116,7 @@ namespace LMS_GL.Controllers
                 {
                     _context.Update(category);
                     await _context.SaveChangesAsync();
+                    TempData["success"] = "Category Edited Successfully";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -166,6 +168,7 @@ namespace LMS_GL.Controllers
             }
             
             await _context.SaveChangesAsync();
+            TempData["success"] = "Category deleted Successfully";
             return RedirectToAction(nameof(Index));
         }
 

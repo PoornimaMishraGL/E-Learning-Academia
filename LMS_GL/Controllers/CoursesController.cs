@@ -75,7 +75,8 @@ namespace LMS_GL.Controllers
             courses.ImagePath= "Images/" + courses.CourseImage.FileName;
             _context.Add(courses);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+            TempData["success"] = "Course Created Successfully";
+            return RedirectToAction(nameof(Index));
             
             ViewData["CategId"] = new SelectList(_context.category, "CategId", "CategoryName", courses.CategId);
             return View(courses);
@@ -114,7 +115,8 @@ namespace LMS_GL.Controllers
                     courses.ImagePath = "Images/" + courses.CourseImage.FileName;
                     _context.Update(courses);
                     await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+            TempData["success"] = "Course Edited Successfully";
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Courses/Delete/5
@@ -152,6 +154,7 @@ namespace LMS_GL.Controllers
             }
             
             await _context.SaveChangesAsync();
+            TempData["success"] = "Category Deleted Successfully";
             return RedirectToAction(nameof(Index));
         }
 
