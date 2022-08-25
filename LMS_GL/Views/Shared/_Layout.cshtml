@@ -96,9 +96,10 @@
                 <a class="nav-item nav-link" asp-controller="ContactUs" asp-action="Index">ContactUs</a>
                 <a class="nav-item nav-link" asp-controller="Feedbacks" asp-action="Index">Feedbacks</a>
                 @*<a class="nav-item nav-link" asp-controller="Carts" asp-action="Index">Cart</a>*@
-
-                <a class="nav-item nav-link" asp-controller="Carts" asp-action="Index"><i class="bi bi-cart4" style="width:100px"></i></a>
-
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="nav-item nav-link" asp-controller="Carts" asp-action="Index"><i class="bi bi-cart4" style="width:100px"></i></a>
+                }
             </div>
             @*<a href="" class="btn btn-primary"> </a>*@
             <div class="btn-group" role="group">

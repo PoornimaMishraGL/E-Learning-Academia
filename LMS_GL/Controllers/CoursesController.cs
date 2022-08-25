@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LMS_GL.Models;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LMS_GL.Controllers
 {
@@ -29,6 +30,7 @@ namespace LMS_GL.Controllers
             return View(await lMSContext.ToListAsync());
             //return View();
         }
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> AdminIndex()
         {
             var lMSContext = _context.courses.Include(c => c.category);

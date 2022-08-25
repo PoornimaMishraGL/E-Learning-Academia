@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LMS_GL.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LMS_GL.Controllers
 {
@@ -35,6 +36,7 @@ namespace LMS_GL.Controllers
         {
             return View(_context.courses.Where(e => e.CategId == id).ToList());
         }
+        [Authorize(Roles ="admin")]
         public async Task<IActionResult> Adminindex()
         {
             return _context.category != null ?
