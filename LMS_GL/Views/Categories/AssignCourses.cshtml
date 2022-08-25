@@ -2,14 +2,15 @@
 
 @{
     ViewData["Title"] = "AssignProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>AssignCourses</h1>
+@*<h1>AssignCourses</h1>
 
 @*<p>
     <a asp-action="Create">Create New</a>
 </p>*@
-<table class="table">
+@*<table class="table">
     <thead>
         <tr>
            
@@ -34,15 +35,35 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            @*<td>
+       
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-8 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="course-item bg-light">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid" src="~/Images/python.jpg" alt="">
+                        </div>
+                        <div class="text-center p-4 pb-0">
+                            <h3 class="mb-0">@item.Coursename</h3>
+                           <h3 class="mb-0">@item.Price</h3>
+                           <h3 class="mb-0">@item.Description</h3>
+                           <h3 class="mb-0">@item.duration</h3>
+                           <h3 class="mb-0">@item.MentorName</h3>
+                        </div>
+                        
+                        <h2></h2>
+                    </div>
+                </div>
+            </div>
+           
+
+        @*    @*<td>
                 @Html.DisplayFor(modelItem => item.category.CategId)
             </td>*@
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Coursename)
             </td>
            @* <td><img src="~/@item.CourseImage" width="50" /></td>*@
-            <td>
+           @* <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
@@ -51,15 +72,58 @@
             <td>
                 @Html.DisplayFor(modelItem => item.duration)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MentorName)
-            </td>
+            <td>*@
+@*                @Html.DisplayFor(modelItem => item.MentorName)
+            </td>*@
             @*<td>
                 <a asp-action="Edit" asp-route-id="@item.CourseId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.CourseId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.CourseId">Delete</a>
             </td>*@
-        </tr>
+   @*    
 }
     </tbody>
-</table>
+</table>*@
+
+  <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h2 class="section-title bg-white text-center text-primary px-3">"Courses</h2>
+                <h1 class="mb-5">Popular Courses</h1>
+                @*<button style="text-align:end">Filter</button>*@
+            </div>
+            @foreach(var item in Model){
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="course-item bg-light">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid" src="/Images/python.jpg" alt="">
+                        </div>
+                        <div class="text-center p-4 pb-0">
+                            <h3 class="mb-0"><i class="bi bi-currency-rupee"></i> @item.Price</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                            <h4>Course: @item.Coursename</h4>
+                            @*<h4>Category: @item.category.CategoryName</h4>*@
+                            <h5 class="mb-4">Desc: @item.Description</h5>
+                        </div>
+                        <div class="d-flex border-top">
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>@item.MentorName</small>
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>@item.duration</small>
+                            <a asp-action="Add_to_cart" class="btn btn-warning" asp-controller="Carts" asp-route-id="@item.CourseId" asp-route-stuid="1"><i class="bi bi-cart-check"></i></a>
+@*                            <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.CourseId"><i class="bi bi-trash3"></i></a>*@
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <h4></h4>
+            }
+        </div>
+    </div>
+    <!-- Courses End -->
+
