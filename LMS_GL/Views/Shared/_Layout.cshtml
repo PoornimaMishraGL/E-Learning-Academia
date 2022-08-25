@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>eLEARNING - LMS_GL</title>
+    <title>eLEARNING - Academia</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -34,10 +34,10 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 
  <body style="background-color:aliceblue">
@@ -67,11 +67,10 @@
 
                 @*<a class="nav-item nav-link" asp-controller="Courses" asp-action="Index">Courses</a>*@
                 <div class="nav-item dropdown">
-                    <a aasp-controller="Courses" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Courses</a>
+                    <a asp-controller="Courses" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Courses</a>
                     <div class="dropdown-menu fade-down m-0">
                         <a asp-controller="Courses" asp-action="Adminindex" class="dropdown-item">Admin</a>
                         <a asp-controller="Courses" asp-action="Index" class="dropdown-item">Student</a>
-                        
                     </div>
                 </div>
                 @*<div class="nav-item dropdown">
@@ -84,10 +83,9 @@
                 </div>*@
 
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu fade-down m-0">
                         <a asp-controller="Home" asp-action="About" class="dropdown-item">About</a>
-                        
                         <a asp-controller="Home" asp-action="OurTeam" class="dropdown-item">Our Team</a>
                     </div>
                 </div>
@@ -111,7 +109,7 @@
 <!----------------------------------------------------------- Navbar End ------------------------------------------------------------->
 
 
-<div class="container">
+<div class="container mw-100">
         <main role="main" class="pb-3">
             <div class="align-content-center " style="color:green">
                 <partial name="_Notification"></partial>
@@ -127,10 +125,10 @@
 <div class="container py-5">
     <div class="row g-5">
         <div class="col-lg-3 col-md-6">
-            <h4 class="text-white mb-3">cMore</h4>
-            <a class="btn btn-link" href="">About Us</a>
-            <a class="btn btn-link" href="">Contact Us</a>
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
+            <h4 class="text-white mb-3">More</h4>
+            <a class="btn btn-link" asp-controller="Home" asp-action="About">About Us</a>
+            <a class="btn btn-link" asp-controller="ContactUs" asp-action="Index">Contact Us</a>
+            <a class="btn btn-link" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
             @*<a class="btn btn-link" href="">Terms & Condition</a>*@
             @*<a class="btn btn-link" href="">FAQs & Help</a>*@
         </div>
@@ -160,14 +158,15 @@
     <div class="copyright">
         <div class="row">
             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                &copy; <a class="border-bottom" href="#">LMS_GL</a>, All Right Reserved.
+                &copy; <a class="border-bottom" href="#">Academia</a>, All Right Reserved.
             </div>
             <div class="col-md-6 text-center text-md-end">
                 <div class="footer-menu">
-                    <a href="">Home</a>
+                    <a asp-controller="Home" asp-action="Index">Home</a>
+                    <a asp-controller="ContactUs" asp-action="Index">Help</a>
                     <a href="">Cookies</a>
-                    <a href="">Help</a>
-                    <a href="">FQAs</a>
+                    <a asp-controller="Feedbacks" asp-action="Index">FQAs</a>
+                    
                 </div>
             </div>
         </div>
