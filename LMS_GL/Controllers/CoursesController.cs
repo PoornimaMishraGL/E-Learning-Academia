@@ -27,7 +27,15 @@ namespace LMS_GL.Controllers
         {
             var lMSContext = _context.courses.Include(c => c.category);
             return View(await lMSContext.ToListAsync());
+            //return View();
         }
+        public async Task<IActionResult> AdminIndex()
+        {
+            var lMSContext = _context.courses.Include(c => c.category);
+            return View(await lMSContext.ToListAsync());
+            //return View();
+        }
+
 
         // GET: Courses/Details/5
         public async Task<IActionResult> Details(int? id)

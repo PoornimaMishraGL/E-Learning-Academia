@@ -53,81 +53,90 @@
 
 
 
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+<!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+
 
 <!-- Pills navs -->
-<div class="container col-md-4  my-4">
-      <h2 class="text-center"> Log In</h2>
+    <div class="bg-box">
+ 
+    <div class="container col-md-4  my-4">
+        <h5 class="section-title bg-white text-center text-primary px-3">Log In</h5>
+        <img src="~/Images/signup.png" alt="">
+  
+    <!-- Pills content -->
+    <div class="tab-content mb-3">
+      <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+        <form id="account" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<!-- Pills content -->
-<div class="tab-content mb-3">
-  <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-    <form id="account" method="post">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-      <div class="text-center ">
-        <p>Sign in with:</p>
-        <button type="button" class="btn btn-link btn-floating mx-1">
-          <i class="fab fa-facebook-f"></i>
-        </button>
-
-        <button type="button" class="btn btn-link btn-floating mx-1">
-          <i class="fab fa-google"></i>
-        </button>
-
-        <button type="button" class="btn btn-link btn-floating mx-1">
-          <i class="fab fa-twitter"></i>
-        </button>
-
-        <button type="button" class="btn btn-link btn-floating mx-1">
-          <i class="fab fa-github"></i>
-        </button>
-      </div>
-
-      <p class="text-center">or:</p>
-
-      <!-- Email input -->
-      <div class="form-floating mb-3">
-        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-        <label asp-for="Input.Email" class="form-label"></label>
-        <span asp-validation-for="Input.Email" class="text-danger"></span>
-      </div>
-      <!-- Password input -->
-      <div class="form-floating mb-3">
-        <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
-        <label asp-for="Input.Password" class="form-label"></label>
-        <span asp-validation-for="Input.Password" class="text-danger"></span>
-      </div>
-      <!-- 2 column grid layout -->
-      <div class="row mb-4">
-        <div class="col-md-6 d-flex justify-content-center">
-          <!-- Checkbox -->
-          <div class="form-check mb-3 mb-md-0">
-            <label asp-for="Input.RememberMe" class="form-label">
-               <input class="form-check-input" asp-for="Input.RememberMe" />
-               @Html.DisplayNameFor(m => m.Input.RememberMe)
-            </label>
+          <!-- Email input -->
+          <div class="form-floating mb-3">
+            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+            <label asp-for="Input.Email" class="form-label"></label>
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
           </div>
-        </div>
-        <button id="login-submit" type="submit" class="w-100 btn btn-md btn-primary">Log in</button>
-        <div class="justify-content-end">
-          <p class="mb-2">
-            <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-          </p>
-          @*<p class="mb-2">
-            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-          </p>
-          <p class="mb-2">
-             <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-          </p>*@
-        </div>
+          <!-- Password input -->
+          <div class="form-floating mb-3">
+            <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+            <label asp-for="Input.Password" class="form-label"></label>
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+          </div>
+          <!-- 2 column grid layout -->
+          <div class="row mb-4">
+            <div class="col-md-6 d-flex justify-content-center">
+              <!-- Checkbox -->
+              <div class="form-check mb-3 mb-md-0">
+                <label asp-for="Input.RememberMe" class="form-label">
+                   <input class="form-check-input" asp-for="Input.RememberMe" />
+                   @Html.DisplayNameFor(m => m.Input.RememberMe)
+                </label>
+              </div>
+            </div>
+            <button id="login-submit" type="submit" class="w-100 btn btn-md btn-primary">Log in</button>
+            <div class="justify-content-end">
+              <p class="mb-2">
+                <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+              </p>
+              <h4 class="text-center">Or</h4>
+            <div class="text-center ">
+                    <h6>Sign in with:</h6>
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-facebook-f"></i>
+                    </button>
 
-      </div>
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-google"></i>
+                    </button>
 
-      <!-- Submit button -->
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-twitter"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-github"></i>
+                    </button>
+          </div>
+
+              @*<p class="mb-2">
+                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+              </p>
+              <p class="mb-2">
+                 <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+              </p>*@
+
+          <!-- Submit button -->
       
-    </form>
-  </div>
-</div>
-</div>
+        </form>
+      </div>
+    </div>
+    </div>
+    </div>
 <!-- Pills content -->
 
 @section Scripts {
