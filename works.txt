@@ -1,0 +1,12 @@
+Sanchit:- Front End(Views),Web designing, Front end + Backend connections +Helping others + Generating views seperately
+
+Hemraj:- Front End(Views),Search/filter,Notification(Popop),Scafholding,Add To Cart +Helping others
+
+
+Poornima:- All Models,Controller, filteration of categorioes/courses,Add To Cart+Helping others
+
+
+Ishan:- Authorization and Authentication,Images,Data Content+Helping others
+
+
+Narayan:-Payment Gateway,Microservices +Helping others
