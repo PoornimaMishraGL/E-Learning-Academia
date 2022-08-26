@@ -9,12 +9,14 @@
                 </div>
  <div>
   <br />
-    <table class="table table-striped border">
-        <tr>
+    <table class="table table-striped border" id="myTable">
+        <thead>
+        <tr class="table-info">
             <th> @Html.DisplayNameFor(c=>c.CategoryName)</th>
             <th></th>
         </tr>
-        
+        </thead>
+        <tbody>
            @foreach(var item in Model){
                 <tr>
                     <td>
@@ -31,6 +33,14 @@
                     </td>
                 </tr>
             }
+            </tbody>
     </table>
 </div>
 
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function() {
+        $('#myTable').DataTable( );
+        } );
+    </script>
+}
